@@ -1,0 +1,147 @@
+﻿<Window x:Class="Cinema_WPF.CRUD.ShowCRUD"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cinema_WPF.CRUD"
+        mc:Ignorable="d" Background="Beige"
+        Title="ShowCRUD" Height="600" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="230"/>
+            <RowDefinition Height="250"/>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Content="CRUD for Shows"/>
+
+        <DataGrid Grid.Row="1" AutoGenerateColumns="False" Margin="5,5,5,5" Name="ShowDG" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ShowID" Binding="{Binding ShowID}"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
+                <DataGridTextColumn Header="StartTime" Binding="{Binding StartTime}"/>
+                <DataGridTextColumn Header="EndTime" Binding="{Binding EndTime}"/>
+                <DataGridTextColumn Header="Movie" Binding="{Binding MovieID}"/>
+                <DataGridTextColumn Header="CinemaHallID" Binding="{Binding CinemaHallID}"/>
+
+                <DataGridTemplateColumn Header="Update Show">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+
+                            <Button Content="Edit" Click="UpdateShowForEdit"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Delete Show">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Delete" Click="DeleteShow"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="2">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" BorderBrush="Black" BorderThickness="1" Margin="5">
+                <StackPanel Margin="5">
+                    <Label Content="Add new Show" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <Grid Margin="5" x:Name="AddNewShowGrid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+
+                        </Grid.RowDefinitions>
+                        <Label Grid.Row="0" Grid.Column="0" Content="ShowID"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding ShowID}"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="Date"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Date}"/>
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="StartTime"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding StartTime}"/>
+
+                        <Label Grid.Row="3" Grid.Column="0" Content="EndTime"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding EndTime}"/>
+
+                        <Label Grid.Row="4" Grid.Column="0" Content="MovieID"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding MovieID}"/>
+
+                        <Label Grid.Row="5" Grid.Column="0" Content="HallID"/>
+                        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding CinemaHallID}"/>
+
+                        <Button Grid.Row="5" Grid.ColumnSpan="2" Content="Add" Margin="0,53,10,-42" Click="AddShow"/>
+
+                    </Grid>
+
+                </StackPanel>
+            </Border>
+
+            <Border Grid.Column="1" BorderBrush="Black" BorderThickness="1" Margin="5">
+                <StackPanel Margin="5">
+                    <Label Content="Update Show" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <Grid Margin="5" x:Name="UpdateShowGrid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+
+                        <Label Grid.Row="0" Grid.Column="0" Content="ShowID"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding ShowID}"/>
+
+                        <Label Grid.Row="1" Grid.Column="0" Content="Date"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Date}"/>
+
+                        <Label Grid.Row="2" Grid.Column="0" Content="StartTime"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding StartTime}"/>
+
+                        <Label Grid.Row="3" Grid.Column="0" Content="EndTime"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding EndTime}"/>
+
+                        <Label Grid.Row="4" Grid.Column="0" Content="Movie ID"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding MovieID}"/>
+
+                        <Label Grid.Row="5" Grid.Column="0" Content="Hall ID"/>
+                        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding CinemaHallID}"/>
+
+                        <Button Grid.Row="6" Grid.ColumnSpan="2" Content="Update" Margin="0,54,10,-44" Click="UpdateShow"/>
+
+                    </Grid>
+
+                </StackPanel>
+            </Border>
+
+
+        </Grid>
+
+    </Grid>
+</Window>
